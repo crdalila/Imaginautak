@@ -20,4 +20,3 @@ app.use(express.json());
 app.listen(APP_PORT,()=>{
     console.log(`Backend conectado al puerto ${APP_PORT}`);
 })
-
