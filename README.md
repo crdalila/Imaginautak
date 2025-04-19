@@ -30,7 +30,7 @@ APP_HOST=
 ```
 
 ### docker compose
-Pon a funcionar la BBGG (base de gatos). Para ello, en la consola ejecuta el siguiente comando:
+Pon a funcionar la BBDD. Para ello, en la consola ejecuta el siguiente comando:
 ```
 docker compose up --build
 ```
