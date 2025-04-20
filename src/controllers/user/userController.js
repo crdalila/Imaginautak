@@ -2,10 +2,17 @@ import User from "../../models/user.js";
 
 // Conseguir USER por su ID
 async function getByID(id) {
-    const user = await User.findByPk(id);
+    const user = await User.findByPk(id, {
+        attributes: 
+        { 
+            exclude: ['password']  //para que no muestre la contraseña:
+        }
+    });
+
     if (!user) {
         throw new Error(`Usuario con ID ${id} no encontrado`);
     }
+
     return user;
 }
 

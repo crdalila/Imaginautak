@@ -58,14 +58,14 @@ INSERT INTO project (title, description, trigger_warnings, project_url, project_
 VALUES
 ('Entre aplausos y burbujas estrelladas', 'Antología de relatos con background feminista y fantasioso', NULL, 'https://dalilaescribe.com/cuerpos', 'cuerpos.jpg', NULL, NOW()),
 ('Raíces de plata', 'Colección de joyas inspiradas en raíces, cortezas y estructuras vegetales.', NULL, 'https://vickyjoy.com/raices', 'raices.jpg', NULL, NOW()),
-('Mundos flotantes', 'Diseños gráficos que conectan con lo etéreo y lo orgánico.', NULL, 'https://anaisdesign.com/flotantes', 'flotantes.jpg', NULL, NOW()),
-('Bestiario de la era digital', 'Serie de ilustraciones de criaturas tecnomitológicas.', NULL, 'https://igorart.com/bestiario', 'bestiario.jpg', NULL, NOW()),
-('Tiempo Muerto', 'Cortometraje experimental sobre la repetición y el duelo.', 'death', 'https://izasfilms.net/tiempomuerto', 'tiempo_muerto.jpg', 'tiempo_muerto.mp4', NOW()),
-('Roma es inevitable', 'Poesía visual sobre cómo todos los caminos llevan a roma, al feminismo y la escritura.', 'mental health', 'https://amaia.poetry/ruinas', 'verso.jpg', NULL, NOW()),
+('DONE0424', 'Identidad gráfica de la ilustradora Anaís Cabado, diseño gráfico e ilustración', NULL, 'https://anaisdesign.com/flotantes', 'flotantes.jpg', NULL, NOW()),
+('New Pokémons', 'Serie de ilustraciones de variaciones de pokémon ya existentes o pokémon creados por mí', NULL, 'https://igorart.com/bestiario', 'bestiario.jpg', NULL, NOW()),
+('La vida en el campo', 'Cortometraje experimental sobre la vuelta a la naturaleza y los pueblos', 'death', 'https://izasfilms.net/tiempomuerto', 'tiempo_muerto.jpg', 'tiempo_muerto.mp4', NOW()),
+('Roma es inevitable', 'Libro de poesía sobre cómo todos los caminos llevan a roma, al feminismo y la escritura.', 'mental health', 'https://amaia.poetry/ruinas', 'verso.jpg', NULL, NOW()),
 ('Luz de barrio', 'Serie fotográfica documental sobre la vida cotidiana.', NULL, 'https://leoviews.com/luzdebarrio', 'luz.jpg', NULL, NOW()),
 ('Colores del ruido', 'Pinturas abstractas sobre el caos sonoro moderno.', NULL, 'https://lorna.art/ruido', 'ruido.jpg', NULL, NOW()),
-('Rebeldía gráfica', 'Proyecto visual de carteles para causas sociales.', 'mental health', 'https://kimetz.org/rebel', 'rebel.jpg', NULL, NOW()),
-('Naturaleza Sintética', 'Álbum experimental que combina paisajes sonoros y electrónica.', NULL, 'https://noahmusic.net/natsyn', 'natsyn.jpg', 'natsyn.mp4', NOW());
+('So sad today', 'Charlas explicativas que reflexionan sobre la salud mental de las personas trans', 'mental health', 'https://kimetz.org/rebel', 'rebel.jpg', NULL, NOW()),
+('Frankenstein', 'Álbum experimental que combina rock indie y electrónica.', NULL, 'https://noahmusic.net/natsyn', 'natsyn.jpg', 'natsyn.mp4', NOW());
 
 -- tabla CATEGORIES
 INSERT INTO category (category_name)
@@ -96,14 +96,14 @@ INSERT INTO artist_has_project (artist_id, project_id)
 VALUES
 (11, 1), -- Dalila → "Entre aplausos y burbujas estrelladas"
 (12, 2), -- Vicky → "Raíces de plata"
-(13, 3), -- Anaís → "Mundos flotantes"
-(14, 4), -- Igor → "Bestiario de la era digital"
-(15, 5), -- Izas → "Tiempo Muerto"
+(13, 3), -- Anaís → "DONE0424"
+(14, 4), -- Igor → "New Pokémons"
+(15, 5), -- Izas → "La vida en el campo"
 (16, 6), -- Amaia → "Roma es inevitable"
 (17, 7), -- Leo → "Luz de barrio"
 (18, 8), -- Lorna → "Colores del ruido"
-(19, 9), -- Kimetz → "Rebeldía gráfica"
-(20, 10),-- Noah → "Naturaleza Sintética"
+(19, 9), -- Kimetz → "So sad today"
+(20, 10),-- Noah → "Frankenstein"
 
 -- Colaboraciones:
 (13, 9), -- Anaís también colaboró en "Rebeldía gráfica" con Kimetz

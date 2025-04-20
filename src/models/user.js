@@ -1,4 +1,4 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 import connection from "../config/sequelize.js";
 
 // Modelo de la tabla User
@@ -24,6 +24,8 @@ const User = connection.define("user", {
     },
     created_at:{
         type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.NOW, //para que la fecha sea cuando se crea
     },
     role: {
         type: DataTypes.ENUM("user", "admin"),
