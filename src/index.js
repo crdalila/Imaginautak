@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import router from "./routes/router.js";
+import './models/relations.js';
 
 // cargar variables de entorno
 dotenv.config();
