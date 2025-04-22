@@ -1,9 +1,8 @@
 import Artist from "../../models/artist.js";
-import Artist_has_project from "../../models/artist_has_project.js";
 import Category from "../../models/category.js";
 import Project from "../../models/project.js";
 import Project_has_category from "../../models/project_has_category.js";
-
+import { ProjectDateNotProvided, ProjectDescriptionNotProvided, ProjectTitleNotProvided, ProjectImgsNotProvided, ProjectURLNotProvided } from "../../utils/errors.js";
 
 // Conseguir todos los PROJECTS (solo título, descripción y categorías)
 async function getAll() {
@@ -32,7 +31,7 @@ async function getByID(id) {
                 model: Artist,
                 attributes: ['artist_id', 'artistic_name'],
                 through: {
-                    attributes: [] // esto ya es suficiente, no necesitás poner `model`
+                    attributes: []//se puede poner esto o con el model: tabla intermedia, pero no hace falta porque sequelize ya lo hace solo
                 }
             },
             {
@@ -54,19 +53,19 @@ async function getByID(id) {
 async function create(data) {
     //TODO: errores genéricos
     if (!data.title) {
-        throw new AppointmentDateNotProvided();
+        throw new ProjectTitleNotProvided();
     }
     if (!data.description) {
-        throw new AppointmentDateNotProvided();
+        throw new ProjectDescriptionNotProvided();
     }
     if (!data.project_url) {
-        throw new AppointmentDescriptionNotProvided();
+        throw new ProjectURLNotProvided();
     }
     if (!data.project_imgs) {
-        throw new AppointmentDescriptionNotProvided();
+        throw new ProjectImgsNotProvided();
     }
     if (!data.created_at) {
-        throw new AppointmentDescriptionNotProvided();
+        throw new ProjectDateNotProvided();
     }
     const newProject = await Project.create(data);
     return newProject;

@@ -4,6 +4,7 @@ import Project from "../../models/project.js";
 import Project_has_category from "../../models/project_has_category.js";
 import Category from "../../models/category.js";
 import Fan_follows_artist from "../../models/fan_follows_artist.js";
+import { ArtistBioNotProvided, ArtistImgNotProvided, ArtistNameNotProvided, ArtistSocialMediaNotProvided } from "../../utils/errors.js";
 
 // Conseguir todos los ARTIST (solo nombre artístico y ordenado por orden alfabético)
 async function getAll() {
@@ -54,16 +55,16 @@ async function getByID(id) {
 async function create(data) {
     //TODO: errores genéricos
     if (!data.artistic_name) {
-        throw new AppointmentDateNotProvided();
+        throw new ArtistNameNotProvided();
     }
     if (!data.bio) {
-        throw new AppointmentDateNotProvided();
+        throw new ArtistBioNotProvided();
     }
     if (!data.social_media_01) {
-        throw new AppointmentDescriptionNotProvided();
+        throw new ArtistSocialMediaNotProvided();
     }
     if (!data.img) {
-        throw new AppointmentDescriptionNotProvided();
+        throw new ArtistImgNotProvided();
     }
     const newArtist = await Artist.create(data);
     return newArtist;

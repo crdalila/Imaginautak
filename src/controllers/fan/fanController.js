@@ -2,6 +2,7 @@ import Fan from "../../models/fan.js";
 import User from "../../models/user.js";
 import Artist from "../../models/artist.js";
 import Project from "../../models/project.js";
+import { FanImgNotProvided, FanBioNotProvided } from "../../utils/errors.js";
 
 
 // Conseguir FAN por su ID
@@ -35,10 +36,10 @@ async function getByID(id) {
 async function create(data) {
     //TODO: errores genéricos
     if (!img) {
-        throw new AppointmentDateNotProvided();
+        throw new FanImgNotProvided();
     }
     if (!bio) {
-        throw new AppointmentDateNotProvided();
+        throw new FanBioNotProvided();
     }
     const newFan = await Fan.create(data);
     return newFan;
