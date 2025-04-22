@@ -37,7 +37,6 @@ async function getByID(id) {
                     ],
             }],
         });
-    //si no lo encuentra:
     if (!artist) {
         return null;
     }
@@ -51,7 +50,7 @@ async function getByID(id) {
     return artistData;
 }
 
-// Crear un ARTIST
+// Crear una cuenta ARTIST
 async function create(data) {
     //TODO: errores genéricos
     if (!data.artistic_name) {
@@ -82,7 +81,7 @@ async function edit(id, data) {
     return result;
 }
 
-// Eliminar ARTIST
+// Eliminar la cuenta ARTIST (no user)
 async function remove(id) {
     const response = await Artist.destroy({
         where: { 
@@ -91,7 +90,6 @@ async function remove(id) {
     });
     return response;
 }
-
 
 export default {
     getAll,
