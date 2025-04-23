@@ -1,13 +1,14 @@
 import {Router} from "express";
 import userAPIController from "../controllers/user/userAPIController.js"
+import { isLoggedInAPI } from "../middleware/authMiddleware.js";
 
 const router = Router();
 
-router.post("/:id/eliminar",userAPIController.remove)
+router.delete("/:id/eliminar", isLoggedInAPI, userAPIController.remove)
 
-router.get("/:id",userAPIController.getByID)
+router.get("/:id", isLoggedInAPI, userAPIController.getByID)
 
-router.post("/:id",userAPIController.edit)
+router.put("/:id", isLoggedInAPI, userAPIController.edit)
 
 
 export default router;

@@ -1,15 +1,16 @@
 import {Router} from "express";
 import categoryAPIController from "../controllers/category/categoryAPIController.js";
+import { isLoggedInAPI } from "../middleware/authMiddleware.js";
 
 const router = Router();
 
 router.get("/", categoryAPIController.getAll);
 
-router.post("/crear", categoryAPIController.create);
+router.post("/crear", isLoggedInAPI, categoryAPIController.create);
 
-router.post("/:id/eliminar", categoryAPIController.remove);
+router.delete("/:id/eliminar", isLoggedInAPI,categoryAPIController.remove);
 
-router.post("/:id", categoryAPIController.edit);
+router.put("/:id", isLoggedInAPI, categoryAPIController.edit);
 
 router.get("/:id", categoryAPIController.getByID);
 

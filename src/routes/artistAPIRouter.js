@@ -1,15 +1,16 @@
 import {Router} from "express";
 import artistAPIController from "../controllers/artist/artistAPIController.js";
+import { isLoggedInAPI } from "../middleware/authMiddleware.js";
 
 const router = Router();
 
 router.get("/", artistAPIController.getAll);
 
-router.post("/crear", artistAPIController.create);
+router.post("/crear", isLoggedInAPI, artistAPIController.create);
 
-router.post("/:id/eliminar", artistAPIController.remove);
+router.delete("/:id/eliminar", isLoggedInAPI,artistAPIController.remove);
 
-router.post("/:id", artistAPIController.edit);
+router.put("/:id", isLoggedInAPI, artistAPIController.edit);
 
 router.get("/:id", artistAPIController.getByID);
 
