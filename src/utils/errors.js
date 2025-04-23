@@ -1,5 +1,42 @@
 //******* ERRORES PERSONALIZADOS ********//
 
+// ERRORES DE USUARIO
+class UserNameNotProvided extends Error{
+    constructor(){
+        super("Nombre de usuario no introducido");
+        this.statusCode = 400;
+    }
+}
+class UserEmailNotProvided extends Error {
+    constructor(){
+        super("Email no introducido");
+        this.statusCode = 400;
+    }
+}
+class UserPasswordNotProvided extends Error{
+    constructor(){
+        super("Contraseña no introducida");
+        this.statusCode = 400;
+    }
+}
+class UserRoleIncorrect extends Error {
+    constructor(){
+        super("El rol de usuario tiene que ser cliente o purrfesional");
+        this.statusCode = 400;
+    }
+}
+class UserInvalidCredentials extends Error {
+    constructor(){
+        super("Credenciales erróneas de usuario");
+        this.statusCode = 400;
+    }
+}
+class UserEmailAlreadyExists extends Error {
+    constructor(){
+        super("Este email ya existe");
+        this.statusCode = 400;
+    }
+}
 
 // ERRORES DE ARTISTA
 class ArtistNameNotProvided extends Error {
@@ -83,6 +120,14 @@ class ProjectDateNotProvided extends Error {
 
 // EXPORTS
 export {
+    //user
+    UserNameNotProvided,
+    UserEmailNotProvided,
+    UserPasswordNotProvided,
+    UserRoleIncorrect,
+    UserInvalidCredentials,
+    UserEmailAlreadyExists,
+
     //artist
     ArtistBioNotProvided,
     ArtistImgNotProvided,
