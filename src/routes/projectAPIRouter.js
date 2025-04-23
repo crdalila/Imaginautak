@@ -5,9 +5,9 @@ const router = Router();
 
 router.get("/", projectAPIController.getAll);
 
-router.post("/", projectAPIController.create);
+router.post("/crear", projectAPIController.create);
 
-router.post("/:id/delete", projectAPIController.remove);
+router.post("/:id/eliminar", projectAPIController.remove);
 
 router.post("/:id", projectAPIController.edit);
 

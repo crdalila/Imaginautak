@@ -6,7 +6,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 
 function createToken(userData) {
-    const token = jwt.sign(userData, JWT_SECRET, { expiresIn: '24h' });
+    const token = jwt.sign(userData, JWT_SECRET, { expiresIn: '4h' });
     return token;
 }
 

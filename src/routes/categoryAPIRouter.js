@@ -5,9 +5,9 @@ const router = Router();
 
 router.get("/", categoryAPIController.getAll);
 
-router.post("/", categoryAPIController.create);
+router.post("/crear", categoryAPIController.create);
 
-router.post("/:id/delete", categoryAPIController.remove);
+router.post("/:id/eliminar", categoryAPIController.remove);
 
 router.post("/:id", categoryAPIController.edit);
 

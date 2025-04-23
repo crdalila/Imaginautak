@@ -34,7 +34,6 @@ async function getByID(id) {
 
 // Crear una cuenta FAN
 async function create(data) {
-    //TODO: errores genéricos
     if (!img) {
         throw new FanImgNotProvided();
     }

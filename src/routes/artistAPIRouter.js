@@ -5,9 +5,9 @@ const router = Router();
 
 router.get("/", artistAPIController.getAll);
 
-router.post("/", artistAPIController.create);
+router.post("/crear", artistAPIController.create);
 
-router.post("/:id/delete", artistAPIController.remove);
+router.post("/:id/eliminar", artistAPIController.remove);
 
 router.post("/:id", artistAPIController.edit);
 

@@ -14,6 +14,20 @@ async function getByID(req, res) {
     }
 }
 
+async function create(req, res) {
+    try {
+        const fan = await fanController.create(req.body);
+        res.json(fan);
+    } catch (error) {
+        console.error(error);
+        if (error.statusCode) {
+            res.status(error.statusCode).json({ error: error.message });
+        } else {
+            res.status(500).json({ error: "Error del servidor" });
+        }
+    }
+}
+
 async function edit(req, res) {
     try {
         const id = req.params.id;
@@ -29,7 +43,20 @@ async function edit(req, res) {
     }
 }
 
+async function remove(req, res) {
+    try {
+        const id = req.params.id;
+        const response = await fanController.remove(id);
+        res.status(200).json({ message: "Fan eliminado correctamente" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error del servidor" });
+    }
+}
+
 export default {
-getByID,
-edit
+    getByID,
+    create,
+    edit,
+    remove
 };
