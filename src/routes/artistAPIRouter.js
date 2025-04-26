@@ -6,12 +6,15 @@ const router = Router();
 
 router.get("/", artistAPIController.getAll);
 
-router.post("/crear", isLoggedInAPI, artistAPIController.create);
+router.post("/", isLoggedInAPI, artistAPIController.create);
 
-router.delete("/:id/eliminar", isLoggedInAPI,artistAPIController.remove);
+router.get("/nombre/:artistic_name", artistAPIController.getByName);
+
+router.delete("/:id/eliminar", isLoggedInAPI, artistAPIController.remove);
 
 router.put("/:id", isLoggedInAPI, artistAPIController.edit);
 
 router.get("/:id", artistAPIController.getByID);
+
 
 export default router;

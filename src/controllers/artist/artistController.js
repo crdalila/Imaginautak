@@ -51,9 +51,47 @@ async function getByID(id) {
     return artistData;
 }
 
+// Conseguir ARTIST por su ARTISTIC_NAME y mostrar sus proyectos
+async function getByName(artistic_name) {
+    const artist = await Artist.findOne({ //no podemos usar findbyPK que es solo para primary key
+        where: { artistic_name },
+        include: [
+            {
+                model: Project,
+                through: {
+                    model: Artist_has_project,
+                    attributes: []
+                },
+                attributes: ['project_id', 'title'],
+                include: [
+                    {
+                        model: Category,
+                        through: {
+                            model: Project_has_category,
+                            attributes: []
+                        },
+                        attributes: ['category_id', 'category_name']
+                    }
+                ]
+            }
+        ]
+    });
+
+    if (!artist) {
+        return null;
+    }
+    // Contar sus followers:
+    const followersCount = await Fan_follows_artist.count({
+        where: { artist_id: artist.artist_id }
+    });
+    const artistData = artist.toJSON();
+    artistData.followers_count = followersCount;
+
+    return artistData;
+}
+
 // Crear una cuenta ARTIST
 async function create(data) {
-    //TODO: errores genéricos
     if (!data.artistic_name) {
         throw new ArtistNameNotProvided();
     }
@@ -79,7 +117,8 @@ async function edit(id, data) {
                 artist_id: id
             }
         });
-    return result;
+    const editedArtist = await Artist.findByPk(id);
+    return editedArtist;
 }
 
 // Eliminar la cuenta ARTIST (no user)
@@ -95,6 +134,7 @@ async function remove(id) {
 export default {
     getAll,
     getByID,
+    getByName,
     create,
     edit,
     remove,

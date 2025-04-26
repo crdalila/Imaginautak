@@ -1,4 +1,5 @@
 import userController from "./userController.js";
+import { isLoggedInAPI } from "../../middleware/authMiddleware.js";
 
 async function getByID(req, res) {
     try {
@@ -41,8 +42,16 @@ async function remove(req, res) {
 }
 
 
+// PARA SABER SI ERES ADMIN
+function isAdmin(req) {
+    const user = req.user;
+    return user && user.role === "admin";
+}
+
+
 export default {
 getByID,
 edit,
 remove,
+isAdmin,
 };
