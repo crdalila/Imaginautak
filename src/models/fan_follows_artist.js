@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection from "../config/sequelize.js";
 
-// Modelo de la tabla FAN_FOLLOWS_ARTIST
+// Modelo de la tabla Fan_follows_artist
 const Fan_follows_artist = connection.define("fan_follows_artist", {
     fan_id: {
         type: DataTypes.INTEGER.UNSIGNED,

@@ -53,7 +53,7 @@ async function getByID(id) {
 
 // Conseguir ARTIST por su ARTISTIC_NAME y mostrar sus proyectos
 async function getByName(artistic_name) {
-    const artist = await Artist.findOne({ //no podemos usar findbyPK que es solo para primary key
+    const artist = await Artist.findOne({
         where: { artistic_name },
         include: [
             {
@@ -80,7 +80,7 @@ async function getByName(artistic_name) {
     if (!artist) {
         return null;
     }
-    // Contar sus followers:
+    //contar sus followers:
     const followersCount = await Fan_follows_artist.count({
         where: { artist_id: artist.artist_id }
     });

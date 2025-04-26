@@ -19,7 +19,7 @@ async function getByID(id) {
                 model: Project,
                 attributes: ['project_id', 'title', 'description'],
                 through: {
-                    attributes: [] // esto ya es suficiente, no necesitás poner `model`
+                    attributes: [] // no hace falta poner model porque sequelize ya sabe qué tabla intermedia es
                 },
                 order: [['title', 'ASC']],
             }
@@ -33,7 +33,6 @@ async function getByID(id) {
 
 // Crear una CATEGORY
 async function create(data) {
-    //TODO: errores genéricos
     if (!data.category_name) {
         throw new CategoryNameNotProvided();
     }

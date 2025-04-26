@@ -28,11 +28,11 @@ async function getByID(req, res) {
 
 async function create(req, res) {
     try {
-        //si no eres admin, error
+        // si no eres admin, error
         if (!userAPIController.isAdmin(req)) {
             return res.status(403).json({ error: "No tienes permiso para crear una categoría." });
         }
-        //si existe ya la categoría
+        // si existe ya la categoría
         const existingCategory = await Category.findOne({
             where: {
                 category_name: req.body.category_name
@@ -53,10 +53,9 @@ async function create(req, res) {
     }
 }
 
-
 async function edit(req, res) {
     try {
-        //si no eres admin, error
+        // si no eres admin, error
         if (!userAPIController.isAdmin(req)) {
             return res.status(403).json({ error: "No tienes permiso para editar una categoría." });
         }
@@ -75,7 +74,7 @@ async function edit(req, res) {
 
 async function remove(req, res) {
     try {
-        //si no eres admin, error
+        // si no eres admin, error
         if (!userAPIController.isAdmin(req)) {
             return res.status(403).json({ error: "No tienes permiso para eliminar una categoría." });
         }

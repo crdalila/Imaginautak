@@ -16,7 +16,7 @@ async function getByID(id) {
             {
                 model: Artist,
                 attributes: ['artist_id', 'artistic_name'],
-                through: { attributes: [] }, //ocultamos la tabla intermedia
+                through: { attributes: [] }, // ocultamos la tabla intermedia
             },
             {
                 model: Project,
@@ -34,7 +34,7 @@ async function getByID(id) {
 
 // Crear una cuenta FAN
 async function create(data) {
-    const { img, bio } = data; //si no desestructuras, tendríamos que poner data.img y data.bio
+    const { img, bio } = data; // si no desestructuras, tendríamos que poner data.img y data.bio
     if (!img) {
         throw new FanImgNotProvided();
     }

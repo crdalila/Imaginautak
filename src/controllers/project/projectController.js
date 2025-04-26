@@ -15,7 +15,7 @@ async function getAll() {
                     attributes: ['category_id', 'category_name'],
                     through: {
                         model: Project_has_category,
-                        attributes: [] //para ocultar la tabla intermedia
+                        attributes: [] // para ocultar la tabla intermedia
                     },
                 }
             ],
@@ -32,7 +32,7 @@ async function getByID(id) {
                 model: Artist,
                 attributes: ['artist_id', 'artistic_name'],
                 through: {
-                    attributes: []//se puede poner esto o con el model: tabla intermedia, pero no hace falta porque sequelize ya lo hace solo
+                    attributes: [] // se puede poner esto o con el model: tabla intermedia, pero no hace falta porque sequelize ya lo hace solo
                 }
             },
             {
@@ -47,7 +47,7 @@ async function getByID(id) {
     if (!project) {
         return null;
     }
-    //contar sus favoritos:
+    // contar sus favoritos:
     const favoritesCount = await Fan_favorites_project.count({
         where: { project_id: project.project_id }
     });
@@ -67,7 +67,7 @@ async function getByTitle(title) {
                 model: Artist,
                 attributes: ['artist_id', 'artistic_name'],
                 through: {
-                    attributes: []//se puede poner esto o con el model: tabla intermedia, pero no hace falta porque sequelize ya lo hace solo
+                    attributes: []
                 }
             },
             {
@@ -82,7 +82,7 @@ async function getByTitle(title) {
     if (!project) {
         return null;
     }
-    //contar sus favoritos:
+    // contar sus favoritos:
     const favoritesCount = await Fan_favorites_project.count({
         where: { project_id: project.project_id }
     });

@@ -4,7 +4,6 @@ import { isLoggedInAPI } from "../middleware/authMiddleware.js";
 
 const router = Router();
 
-
 router.post("/", isLoggedInAPI, fanAPIController.create);
 
 router.delete("/:id/eliminar", isLoggedInAPI, fanAPIController.remove);

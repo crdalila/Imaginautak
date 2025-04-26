@@ -33,7 +33,7 @@ async function edit(req, res) {
     try {
         const currentUser = req.user;
         const id = req.params.id;
-        //si el usuario logueado no es el del perfil que quieres editar o si no es un admin
+        // si el usuario logueado no es el del perfil que quieres editar o si no es un admin
         if (currentUser.id !== id && !isAdmin(req)) {
             return res.status(403).json({ error: "No tienes permiso para editar este usuario." });
         }
@@ -55,7 +55,7 @@ async function remove(req, res) {
     try {
         const currentUser = req.user;
         const id = req.params.id;
-        //si el usuario logueado no es el del perfil que quieres eliminar o si no es un admin
+        // si el usuario logueado no es el del perfil que quieres eliminar o si no es un admin
         if (currentUser.id !== id && !isAdmin(req)) {
             return res.status(403).json({ error: "No tienes permiso para eliminar este usuario." });
         }
@@ -67,7 +67,7 @@ async function remove(req, res) {
     }
 }
 
-// PARA SABER SI ERES ADMIN
+// Para saber si es Admin
 function isAdmin(req) {
     const user = req.user;
     return user && user.role === "admin";

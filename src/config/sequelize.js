@@ -27,6 +27,7 @@ const connection = new Sequelize(
     }
 );
 
+// testeamos la conexión
 async function testConnection() {
     try {
         await connection.authenticate();

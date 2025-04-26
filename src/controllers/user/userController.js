@@ -5,7 +5,7 @@ async function getByID(id) {
     const user = await User.findByPk(id, {
         attributes: 
         { 
-            exclude: ['password']  //para que no muestre la contraseña:
+            exclude: ['password']  // para que no muestre la contraseña:
         }
     });
 
@@ -24,7 +24,7 @@ async function getByUsername(username) {
         },
         attributes: 
         { 
-            exclude: ['password']  //para que no muestre la contraseña:
+            exclude: ['password']
         }
     });
 

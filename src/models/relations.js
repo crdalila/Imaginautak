@@ -8,8 +8,7 @@ import Fan_follows_artist from "./fan_follows_artist.js";
 import Fan_favorites_project from "./fan_favorites_project.js";
 import Project_has_category from "./project_has_category.js";
 
-
-// CONFIGURAR LAS RELACIONES DE LOS MODELOS:
+// LAS RELACIONES DE LOS MODELOS:
 
 // User - Artist (1:1)
 User.hasOne(Artist, { foreignKey: "artist_id", onDelete: "CASCADE" });

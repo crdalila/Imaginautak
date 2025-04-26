@@ -1,13 +1,13 @@
 import { verifyToken } from "../utils/token.js";
 
-// PARA SABER SI HAS INICIADO SESIÓN:
+// Para saber si has iniciado sesión
 function isLoggedInAPI(req, res, next){
-    const authorization  = req.headers.authorization; //para conseguir el token, te devuelve BEARER ELTOKENENCUESTIÓN
+    const authorization  = req.headers.authorization; // para conseguir el token, te devuelve BEARER ELTOKENENCUESTIÓN
     if(!authorization){
         res.status(401).json({error:"No has iniciado sesión"});
     }
-    let token = authorization.split(" "); //para separar el BEARER del token en sí
-    token = token.pop(); //nos quedamos con el último, el token
+    let token = authorization.split(" "); // para separar el BEARER del token en sí
+    token = token.pop(); // nos quedamos con el último, el token
     const result = verifyToken(token);
     if(result){
         req.user = {

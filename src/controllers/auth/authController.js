@@ -14,13 +14,13 @@ async function register(userData) {
     if (!userData.password) {
         throw new UserPasswordNotProvided();
     }
-    //si el rol me lo das en mayúsculas, lo paso a minus y si no me das nada, lo pongo user por defecto
+    // si el rol me lo das en mayúsculas, lo paso a minus y si no me das nada, lo pongo user por defecto
     userData.role = userData.role ? userData.role.toLowerCase() : "user";
     const roles = ["user", "admin"];
     if (!roles.includes(userData.role)) {
         throw new UserRoleIncorrect();
     }
-    //si el nuevo usuario que estás intentando crear ya existe
+    // si el nuevo usuario que estás intentando crear ya existe
     const oldUser = await User.findOne({
         where: {
             email: userData.email
@@ -29,7 +29,7 @@ async function register(userData) {
     if (oldUser) {
         throw new UserEmailAlreadyExists();
     }
-    //hashear la contraseña
+    // hashear la contraseña
     const hashedPassword = await hash(userData.password);
     userData.password = hashedPassword;
     const result = await User.create(userData);

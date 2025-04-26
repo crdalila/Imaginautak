@@ -44,15 +44,15 @@ async function getByTitle(req, res) {
 
 async function create(req, res) {
     try {
-        //localizar el artista
+        // localizar el artista
         const userId = req.user.user_id;
         const existingArtist = await findArtistByUserId(userId);
         if (!existingArtist) {
             return res.status(403).json({ error: "Debes ser un artista para crear un proyecto." });
         }
-        //crear proyecto
+        // crear proyecto
         const project = await projectController.create(req.body);
-        //asociar el proyecto con el artista
+        // asociar el proyecto con el artista
         await Artist_has_project.create({
             artist_id: existingArtist.artist_id,
             project_id: project.project_id

@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection from "../config/sequelize.js";
 
-// Modelo de la tabla PROJECT_HAS_CATEGORY
+// Modelo de la tabla Project_has_category
 const Project_has_category = connection.define("project_has_category", {
     project_id: {
         type: DataTypes.INTEGER.UNSIGNED,

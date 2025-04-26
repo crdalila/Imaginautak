@@ -26,7 +26,7 @@ async function create(req, res) {
         const fan = await fanController.create({
             img,
             bio,
-            fan_id: userId, //asociar el fan al usuario que está logueado
+            fan_id: userId, // asociar el fan al usuario que está logueado
         });
         res.json(fan);
     } catch (error) {
@@ -40,7 +40,7 @@ async function edit(req, res) {
     try {
         const id = req.params.id;
         const fan = await fanController.getByID(id);
-        //comprobar si quien ha iniciado sesión es el propietario de este perfil
+        // comprobar si quien ha iniciado sesión es el propietario de este perfil
         if (!isOwner(fan.fan_id, req.user.user_id)) {
             return res.status(403).json({ error: "No tienes permiso para editar este perfil." });
         }

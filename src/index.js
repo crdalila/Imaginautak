@@ -10,14 +10,14 @@ dotenv.config();
 const APP_PORT = process.env.APP_PORT;
 const app = express();
 
-//para leer JSON de las peticiones
+// para leer JSON de las peticiones
 app.use(express.json());
 
 // configurar rutas
 app.use("/",router);
 
 
-// Iniciar servidor
+// iniciar servidor
 app.listen(APP_PORT,()=>{
     console.log(`Backend conectado al puerto ${APP_PORT}`);
 })

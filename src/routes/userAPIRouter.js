@@ -12,5 +12,4 @@ router.get("/:id", isLoggedInAPI, userAPIController.getByID)
 
 router.put("/:id", isLoggedInAPI, userAPIController.edit)
 
-
 export default router;
