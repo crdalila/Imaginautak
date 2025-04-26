@@ -1,6 +1,6 @@
-import fanAPIController from '../controllers/fan/fanAPIController.js';
 import artistAPIController from '../controllers/artist/artistAPIController.js';
 import Fan from '../models/fan.js';
+import artistController from '../controllers/artist/artistController.js';
 
 // PARA SABER SI USER_ID CORRESPONDE CON UN FAN
 async function findFanByUserId(userId) {
@@ -20,7 +20,7 @@ async function findFanByUserId(userId) {
 // PARA SABER SI USER_ID CORRESPONDE CON UN ARTISTA
 async function findArtistByUserId(id) {
     try {
-        const artist = await artistAPIController.getByID(id);
+        const artist = await artistController.getByID(id);
         return artist || null;
     } catch (error) {
         console.error("Error buscando artista por ID:", error);
@@ -74,7 +74,6 @@ async function isArtistAPI(req, res, next) {
         return res.status(500).json({ error: "Error del servidor buscando artista." });
     }
 }
-
 
 export {
     findArtistByUserId,

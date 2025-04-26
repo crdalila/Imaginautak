@@ -16,5 +16,4 @@ router.put("/:id", isLoggedInAPI, artistAPIController.edit);
 
 router.get("/:id", artistAPIController.getByID);
 
-
 export default router;

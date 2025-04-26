@@ -6,7 +6,7 @@ const router = Router();
 
 router.get("/", categoryAPIController.getAll);
 
-router.post("/crear", isLoggedInAPI, categoryAPIController.create);
+router.post("/", isLoggedInAPI, categoryAPIController.create);
 
 router.delete("/:id/eliminar", isLoggedInAPI, categoryAPIController.remove);
 
