@@ -43,14 +43,15 @@ async function create(data) {
 
 // Editar CATEGORY
 async function edit(id, data) {
-    const result = await Project.update(
+    const result = await Category.update(
         data,
         {
             where: {
                 category_id: id
             }
         });
-    return result;
+    const editedCategory = await Category.findByPk(id);
+    return editedCategory;
 }
 
 // Eliminar una CATEGORY
