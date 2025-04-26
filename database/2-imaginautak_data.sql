@@ -3,27 +3,27 @@ USE imaginautak;
 -- tabla USER: hasta el 10 fans, hasta el 20 artist, 21 admin
 INSERT INTO user (email, username, password, role)
 VALUES
-('marta.gomez@email.com', 'martag', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('juan.lopez@email.com', 'juanelo', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('ana.rivas@email.com', 'anar', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('pedro.martin@email.com', 'pedrom', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('laura.navas@email.com', 'launav', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('david.vera@email.com', 'dvera', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('sara.fuentes@email.com', 'saraf', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('alberto.rey@email.com', 'albr', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('ines.soler@email.com', 'iness', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('carlos.meza@email.com', 'cmeza', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('dalila@email.com', 'crdalila', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('vicky@email.com', 'vickypr', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('anais@email.com', 'done', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('igor@email.com', 'igoruve', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('izas@email.com', 'cascun', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('amaia@email.com', 'amaiabarrena', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('leo@email.com', 'views', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('lorna@email.com', 'lorr', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('kimetz@email.com', 'kimetza', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('noah@email.com', 'nooooah', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'user'),
-('admin@email.com', 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaO4xoRbbBvNn0eG8.9q7r3e9G6', 'admin');
+('marta.gomez@email.com', 'martag', '$2b$10$xlhX0iL0gXs6EBRHBf2tseXjEt.UMjLI87PmqWJBpmMIdBxzR5nf6', 'user'),
+('juan.lopez@email.com', 'juanelo', '$2b$10$kByC04qnq/mvYYap937moufViT4YStngCqYyvnSjOxMyQ735nKvDO', 'user'),
+('ana.rivas@email.com', 'anar', '$2b$10$6ZXa/xlA8bieQGlAkiXLP.ToI5wsBZX.NMDVZy.HTlG19D/wwTzd.', 'user'),
+('pedro.martin@email.com', 'pedrom', '$2b$10$vh/wv7LZ6.edrSoStklQbegaJoChNjifaUN43Yy906XJ5smiCwcQ.', 'user'),
+('laura.navas@email.com', 'launav', '$2b$10$yYgMsPEEryTjUnp.3.0DIOozGH4YCzhHEof8sadyQ6ZIVLf6CUVBC', 'user'),
+('david.vera@email.com', 'dvera', '$2b$10$aOa6Dir.gnkuZhwMP/2/.e5ZYzTmRqK/j1L3uHgbRdKVR77OSui16', 'user'),
+('sara.fuentes@email.com', 'saraf', '$2b$10$PqO6/SQyZldwKxbZG3eUCeigQVo6bXvRdJONnPegQqQozobRdYSoK', 'user'),
+('alberto.rey@email.com', 'albr', '$2b$10$PQ4FfXSfO10a8ZyIwdSMGercsDewf7boAqzOlfxWvkhlXup/UN0gO', 'user'),
+('ines.soler@email.com', 'iness', '$2b$10$wRQUHmhIhHXneac2NrxxueMh.xi0jJO0Ya6XljC69zA0SR0UShNX2', 'user'),
+('carlos.meza@email.com', 'cmeza', '$2b$10$IjR79OWBsbGUojAqYgE0i.uGh8wFOjyyfDrETLptfUL4EXiFCTqxi', 'user'),
+('dalila@email.com', 'crdalila', '$2b$10$4ZbDf4VTEiJhuKI6rzbOxecRgDH3VzQytPciwW7V5Lb3zi6ck8Ar2', 'user'),
+('vicky@email.com', 'vickypr', '$2b$10$jTUfvDgInwISBMsgvqMDRu7gRkRUo7pPGxBsqTABn8KpeKkneZfy6', 'user'),
+('anais@email.com', 'done', '$2b$10$bYZx3HwtokiABFCfkB4exO/7KQmJ67VCF9.rG/biaufu1JgItVNmy', 'user'),
+('igor@email.com', 'igoruve', '$2b$10$GMEdj4WjkT57X49QbSEkceryj5PUeIBLwMQ0XAhv9g4Fo21OAWW.q', 'user'),
+('izas@email.com', 'cascun', '$2b$10$gsrtebeeZpRByR/ZMmmsGudvOQkGRhrvF4pt9X1p0Eqy2oQMB7852', 'user'),
+('amaia@email.com', 'amaiabarrena', '$2b$10$bO6T7ntonPy7spK.5XudSu0CGPVLz0W2nRJy8M4lclkvqC1x/4EPm', 'user'),
+('leo@email.com', 'views', '$2b$10$WxyMuOJ74E489jep4TN0Y.8JAhM0zkPyITxyNzL711fMW05KrFtLW', 'user'),
+('lorna@email.com', 'lorr', '$2b$10$yZ6OvJGjGlYq/OVqF68D/.BCkzk0M0UhdEpMPnGub3Q94pNBnh9LG', 'user'),
+('kimetz@email.com', 'kimetza', '$2b$10$B4pNbQqCIOfWVHuvCw1u2e3XVlrTqiFQAWvi275BaXMxrFBSq0SB6', 'user'),
+('noah@email.com', 'nooooah', '$2b$10$PkB75Nx4YTcvtcH8Sgr/DOYK9hTjvqpP6LCmAXhh0Up0IZdQFAcTC', 'user'),
+('admin@email.com', 'admin', '$2b$10$n2lM9PMuO7ZR74nLTNXwQOAuTckOo8RLh/52NcEdQtCbE.W6QpRqq', 'admin');
 
 -- tabla ARTIST
 INSERT INTO artist (artist_id, artistic_name, bio, website, social_media_01, social_media_02, img)
@@ -89,7 +89,8 @@ VALUES
 ('jewelry'),
 ('textile art'),
 ('handmade crafts'),
-('activism');
+('activism'),
+('other');
 
 -- tabla ARTIST HAS PROJECT: individual y colaboraciones
 INSERT INTO artist_has_project (artist_id, project_id)
