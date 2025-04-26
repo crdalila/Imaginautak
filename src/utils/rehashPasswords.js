@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 
-// Lista de contraseñas que ya tienes en texto plano
+// LISTA DE USUARIOS CUYAS CONTRASEÑAS HAY QUE HASHEAR
 const users = [
     { email: 'marta.gomez@email.com', password: 'martag' },
     { email: 'juan.lopez@email.com', password: 'juanelo' },
@@ -25,13 +25,12 @@ const users = [
     { email: 'admin@email.com', password: 'admin' }
 ];
 
-// Función para rehacer los hashes
-async function rehasearContraseñas() {
+// PARA HASHEAR DE NUEVO LAS CONTRASEÑAS QUE YA HABÍA METIDO EN LA BASE DE DATOS
+async function rehashPasswords() {
     for (const user of users) {
-        const hashedPassword = await bcrypt.hash(user.password, 10);  // Hasheamos cada contraseña con bcrypt
+        const hashedPassword = await bcrypt.hash(user.password, 10);
         console.log(`Usuario: ${user.email}, Nuevo Hash: ${hashedPassword}`);
-        // Aquí puedes actualizar la base de datos con el nuevo hash
     }
 }
 
-rehasearContraseñas();
+rehashPasswords();

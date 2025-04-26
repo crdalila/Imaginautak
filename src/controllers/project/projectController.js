@@ -123,7 +123,8 @@ async function edit(id, data) {
                 project_id: id
             }
         });
-    return result;
+    const editedProject = await Project.findByPk(id);
+    return editedProject;
 }
 
 // Eliminar un PROJECT
