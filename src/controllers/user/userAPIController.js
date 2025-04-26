@@ -15,11 +15,31 @@ async function getByID(req, res) {
     }
 }
 
+async function getByUsername(req, res) {
+    try {
+        const username = req.params.username;
+        const user = await userController.getByUsername(username);
+        if (!user) {
+            return res.status(404).json({ error: "Usuario no encontrado" });
+        }
+        res.json(user);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error del servidor" });
+    }
+}
+
 async function edit(req, res) {
     try {
+        const currentUser = req.user;
         const id = req.params.id;
-        const result = await userController.edit(id,req.body);
+        //si el usuario logueado no es el del perfil que quieres editar o si no es un admin
+        if (currentUser.id !== id && !isAdmin(req)) {
+            return res.status(403).json({ error: "No tienes permiso para editar este usuario." });
+        }
+        const result = await userController.edit(id, req.body);
         res.json(result);
+
     } catch (error) {
         console.error(error);
         if (error.statusCode) {
@@ -30,9 +50,15 @@ async function edit(req, res) {
     }
 }
 
+
 async function remove(req, res) {
     try {
+        const currentUser = req.user;
         const id = req.params.id;
+        //si el usuario logueado no es el del perfil que quieres eliminar o si no es un admin
+        if (currentUser.id !== id && !isAdmin(req)) {
+            return res.status(403).json({ error: "No tienes permiso para eliminar este usuario." });
+        }
         const response = await userController.remove(id);
         res.status(200).json({ message: "Usuario eliminado correctamente" });
     } catch (error) {
@@ -40,7 +66,6 @@ async function remove(req, res) {
         res.status(500).json({ error: "Error del servidor" });
     }
 }
-
 
 // PARA SABER SI ERES ADMIN
 function isAdmin(req) {
@@ -50,8 +75,9 @@ function isAdmin(req) {
 
 
 export default {
-getByID,
-edit,
-remove,
-isAdmin,
+    getByID,
+    getByUsername,
+    edit,
+    remove,
+    isAdmin,
 };

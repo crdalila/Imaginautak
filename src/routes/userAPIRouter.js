@@ -4,6 +4,8 @@ import { isLoggedInAPI } from "../middleware/authMiddleware.js";
 
 const router = Router();
 
+router.get("/nombredeusuario/:username", isLoggedInAPI, userAPIController.getByUsername)
+
 router.delete("/:id/eliminar", isLoggedInAPI, userAPIController.remove)
 
 router.get("/:id", isLoggedInAPI, userAPIController.getByID)

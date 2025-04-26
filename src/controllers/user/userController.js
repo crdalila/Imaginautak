@@ -16,6 +16,24 @@ async function getByID(id) {
     return user;
 }
 
+// Conseguir USER por su USERNAME
+async function getByUsername(username) {
+    const user = await User.findOne({
+        where: {
+            username,
+        },
+        attributes: 
+        { 
+            exclude: ['password']  //para que no muestre la contraseña:
+        }
+    });
+
+    if (!user) {
+        throw new Error(`Usuario ${username} no encontrado`);
+    }
+    return user;
+}
+
 // Editar USER y sus datos
 async function edit(id,data) {
     if (data.role) {
@@ -33,7 +51,8 @@ async function edit(id,data) {
                 user_id: id
             }
         });
-    return result;
+    const editedUser = await User.findByPk(id);
+    return editedUser;
 }
 
 // Eliminar USER
@@ -46,10 +65,9 @@ async function remove(id) {
         return response;
 }
 
-
-
 export default {
     getByID,
+    getByUsername,
     edit,
     remove
 };

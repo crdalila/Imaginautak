@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `imaginautak`.`artist` (
   CONSTRAINT `fk_artist_user1`
     FOREIGN KEY (`artist_id`)
     REFERENCES `imaginautak`.`user` (`user_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `imaginautak`.`fan` (
   CONSTRAINT `fk_fan_user`
     FOREIGN KEY (`fan_id`)
     REFERENCES `imaginautak`.`user` (`user_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
