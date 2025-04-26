@@ -1,5 +1,5 @@
 import artistController from "./artistController.js";
-import { findArtistByUserId, isOwner } from "../../middleware/rolesMiddleware.js";
+import { findArtistByUserId, isOwner } from "../../utils/permissions.js";
 import userAPIController from "../user/userAPIController.js";
 
 async function getAll(req, res) {

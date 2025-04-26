@@ -34,6 +34,7 @@ async function getByID(id) {
 
 // Crear una cuenta FAN
 async function create(data) {
+    const { img, bio } = data; //si no desestructuras, tendríamos que poner data.img y data.bio
     if (!img) {
         throw new FanImgNotProvided();
     }
@@ -44,6 +45,7 @@ async function create(data) {
     return newFan;
 }
 
+
 // Editar FAN y sus datos
 async function edit(id, data) {
     const result = await Fan.update(
@@ -53,7 +55,8 @@ async function edit(id, data) {
                 fan_id: id
             }
         });
-    return result;
+    const editedFan = await Fan.findByPk(id);
+    return editedFan;
 }
 
 // Eliminar cuenta FAN (no user)
