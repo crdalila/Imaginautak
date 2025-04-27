@@ -2,7 +2,7 @@
 
 Proyecto individual de backend que funciona como red social para artistas emergentes de diversas disciplinas y amantes del arte que quieren descubrir nuevos proyectos y artistas. Inspirado en la asociación [Imaginautak](https://www.instagram.com/imaginautak/), que junta una vez al mes en Bilbao diez personas que muestran sus creaciones y pasión por el arte.
 
-### Requisitos
+## Requisitos
 - Node.js
 - Express
 - Sequelize
@@ -11,7 +11,7 @@ Proyecto individual de backend que funciona como red social para artistas emerge
 - Manejo de usuarios
 - Sesiones con encriptación JWT
 
-### Tecnologías utilizadas:
+## Tecnologías utilizadas:
 - Proyecto de BackEnd con metodología MC (modelo controlador) con rutas
 - Dos archivos por cada ruta y controlador: archivo para funciones de JavaScript y otro para render de API
 - CRUD por cada modelo (tabla principal)
@@ -23,12 +23,12 @@ Proyecto individual de backend que funciona como red social para artistas emerge
 - Hasheado de contraseñas
 
 
-### Tablas:
+## Tablas:
 > **Principales**: User, Artist, Fan, Project y Category
 > **Intermedias**: Artist_has_project, Fan_favorites_project, Fan_follows_artist y Project_has_category
 
 
-### Relaciones de las tablas
+## Relaciones de las tablas
 > User - Artist (1:1)
 > User - Fan (1:1)
 > Artist - Project (N:M) → artist_has_project
@@ -36,12 +36,14 @@ Proyecto individual de backend que funciona como red social para artistas emerge
 > Fan - Artist (N:M) → fan_follows_artist
 > Project - Category (N:M) → project_has_category
 
+
 ---
+
 
 ## PUESTA EN MARCHA
 Para poner en marcha este proyecto, sigue los siguientes pasos:
 
-### .ENV
+### .env
 Para que el proyecto sea funcional en tu ordenador, completa los datos solicitados en el .env.example y elimina el .example. Datos en el interior del .env:
 
 ```
@@ -74,41 +76,41 @@ o el puerto que hayas especificado en tu .env, seguido de alguno de los siguient
 
 ### Endpoints
 **AUTH**
-- POST → \_/registro\_
-- POST → /login
+- POST → <ins>/registro</ins>
+- POST → <ins>/login</ins>
 
 **USER**
-- GET por nombre → /usuario/nombredeusuario/:username (solo si has iniciado sesión)
-- DELETE → /usuario/:id/eliminar (solo si eres el USER en cuestión o ADMIN)
-- GET por id → /usuario/:id (solo si has iniciado sesión)
-- PUT editar → /usuario/:id (solo si eres el USER en cuestión)
+- GET por nombre → <ins>/usuario/nombredeusuario/:username</ins> (solo si has iniciado sesión)
+- DELETE → <ins>/usuario/:id/eliminar</ins> (solo si eres el USER en cuestión o ADMIN)
+- GET por id → <ins>/usuario/:id</ins> (solo si has iniciado sesión)
+- PUT editar → <ins>/usuario/:id</ins> (solo si eres el USER en cuestión)
 
 **ARTIST**
-- GET todos → /artistas/ (puedes acceder sin haber iniciado sesión)
-- POST crear → /artistas/ (solo si has iniciado sesión)
-- GET por nombre → /artistas/nombre/:artistic_name (puedes acceder sin haber iniciado sesión)
-- DELETE → /artistas/:id/eliminar (solo si eres el ARTIST en cuestión o ADMIN)
-- GET por id → /artistas/:id (puedes acceder sin haber iniciado sesión)
-- PUT editar → /artistas/:id (solo si eres el ARTIST en cuestión)
+- GET todos → <ins>/artistas/</ins> (puedes acceder sin haber iniciado sesión)
+- POST crear → <ins>/artistas/</ins> (solo si has iniciado sesión)
+- GET por nombre → <ins>/artistas/nombre/:artistic_name</ins> (puedes acceder sin haber iniciado sesión)
+- DELETE → <ins>/artistas/:id/eliminar</ins> (solo si eres el ARTIST en cuestión o ADMIN)
+- GET por id → <ins>/artistas/:id</ins> (puedes acceder sin haber iniciado sesión)
+- PUT editar → <ins>/artistas/:id</ins> (solo si eres el ARTIST en cuestión)
 
 **FAN**
-- POST crear → /fan/ (solo si has iniciado sesión)
-- DELETE → /fan/:id/eliminar (solo si eres FAN o ADMIN)
-- GET por id → /fan/:id (solo si has iniciado sesión)
-- PUT editar → /fan/:id (solo si eres el FAN en cuestión)
+- POST crear → <ins>/fan/</ins> (solo si has iniciado sesión)
+- DELETE → <ins>/fan/:id/eliminar</ins> (solo si eres FAN o ADMIN)
+- GET por id → <ins>/fan/:id</ins> (solo si has iniciado sesión)
+- PUT editar → <ins>/fan/:id</ins> (solo si eres el FAN en cuestión)
 
 **PROJECT**
-- GET todos → /proyectos/ (puedes acceder sin haber iniciado sesión)
-- POST crear → /proyectos/ (solo si eres ARTIST)
-- GET por nombre → /proyectos/titulo/:title (puedes acceder sin haber iniciado sesión)
-- DELETE → /proyectos/:id/eliminar (solo si eres el ARTIST en cuestión o ADMIN)
-- GET por id → /proyectos/:id (puedes acceder sin haber iniciado sesión)
-- PUT editar → /proyectos/:id (solo si eres el ARTIST en cuestión)
+- GET todos → <ins>/proyectos/</ins> (puedes acceder sin haber iniciado sesión)
+- POST crear → <ins>/proyectos/</ins> (solo si eres ARTIST)
+- GET por nombre → <ins>/proyectos/titulo/:title</ins> (puedes acceder sin haber iniciado sesión)
+- DELETE → <ins>/proyectos/:id/eliminar</ins> (solo si eres el ARTIST en cuestión o ADMIN)
+- GET por id → <ins>/proyectos/:id</ins> (puedes acceder sin haber iniciado sesión)
+- PUT editar → <ins>/proyectos/:id</ins> (solo si eres el ARTIST en cuestión)
 
 **CATEGORY**
-- GET todos → /categorias/ (puedes acceder sin haber iniciado sesión)
-- POST crear → /categorias/ (solo si eres ADMIN)
-- GET por nombre → /proyectos/titulo/:title (puedes acceder sin haber iniciado sesión)
-- DELETE → /categorias/:id/eliminar (solo si eres ADMIN)
-- GET por id → /categorias/:id (puedes acceder sin haber iniciado sesión)
-- PUT editar → /categorias/:id (solo si eres ADMIN)
+- GET todos → <ins>/categorias/</ins> (puedes acceder sin haber iniciado sesión)
+- POST crear → <ins>/categorias/</ins> (solo si eres ADMIN)
+- GET por nombre → <ins>/proyectos/titulo/:title</ins> (puedes acceder sin haber iniciado sesión)
+- DELETE → <ins>/categorias/:id/eliminar</ins> (solo si eres ADMIN)
+- GET por id → <ins>/categorias/:id</ins> (puedes acceder sin haber iniciado sesión)
+- PUT editar → <ins>/categorias/:id</ins> (solo si eres ADMIN)
