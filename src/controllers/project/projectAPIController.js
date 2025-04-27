@@ -50,8 +50,13 @@ async function create(req, res) {
         if (!existingArtist) {
             return res.status(403).json({ error: "Debes ser un artista para crear un proyecto." });
         }
-        // crear proyecto
-        const project = await projectController.create(req.body);
+        // crear proyecto (con categorías)
+        const projectData = {
+            ...req.body,
+            created_at: new Date() // si no se manda created_at en el formulario, lo añadimos aquí
+        };
+        const project = await projectController.create(projectData);
+
         // asociar el proyecto con el artista
         await Artist_has_project.create({
             artist_id: existingArtist.artist_id,
@@ -67,6 +72,7 @@ async function create(req, res) {
         }
     }
 }
+
 
 async function edit(req, res) {
     try {

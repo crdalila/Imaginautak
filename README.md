@@ -24,17 +24,19 @@ Proyecto individual de backend que funciona como red social para artistas emerge
 
 
 ## Tablas:
-> **Principales**: User, Artist, Fan, Project y Category
-> **Intermedias**: Artist_has_project, Fan_favorites_project, Fan_follows_artist y Project_has_category
+>- **Principales**: User, Artist, Fan, Project y Category
+>- **Intermedias**: Artist_has_project, Fan_favorites_project, Fan_follows_artist y Project_has_category
 
 
 ## Relaciones de las tablas
-> User - Artist (1:1)
-> User - Fan (1:1)
-> Artist - Project (N:M) → artist_has_project
-> Fan - Project (N:M) → fan_favorites_project
-> Fan - Artist (N:M) → fan_follows_artist
-> Project - Category (N:M) → project_has_category
+>- User - Artist (1:1)
+>- User - Fan (1:1)
+>- Artist - Project (N:M) → artist_has_project
+>- Fan - Project (N:M) → fan_favorites_project
+>- Fan - Artist (N:M) → fan_follows_artist
+>- Project - Category (N:M) → project_has_category
+
+
 
 
 ---

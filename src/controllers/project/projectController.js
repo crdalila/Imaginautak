@@ -92,8 +92,7 @@ async function getByTitle(title) {
     return projectData;
 }
 
-
-// Crear un PROJECT
+// Crear un PROJECT y asociarlo con categorías
 async function create(data) {
     if (!data.title) {
         throw new ProjectTitleNotProvided();
@@ -111,7 +110,31 @@ async function create(data) {
         throw new ProjectDateNotProvided();
     }
     const newProject = await Project.create(data);
-    return newProject;
+    // definir las categorías
+    let categoryIds = [];
+    if (data.categoryIds && data.categoryIds.length > 0) { // si pone categorías, que sea la que ha escrito
+        categoryIds = data.categoryIds;
+    } else {
+        categoryIds = [21]; // si no, ponemos "otros" (id 21) por defecto
+    }
+    // crear las relaciones
+    const categoryAssociations = categoryIds.map(category_id => ({
+        project_id: newProject.project_id,
+        category_id
+    }));
+    await Project_has_category.bulkCreate(categoryAssociations); // es como hacer create una a una, pero lo hace en lote. función de sequelize
+    // para mostrar también las categorías cuando se crea:
+    const createdProject = await Project.findByPk(newProject.project_id, {
+        include: [
+            {
+                model: Category,
+                attributes: ['category_id', 'category_name'],
+                through: { attributes: [] }
+            }
+        ]
+    });
+    
+    return createdProject;
 }
 
 // Editar PROJECT y sus datos
