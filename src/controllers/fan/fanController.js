@@ -25,10 +25,6 @@ async function getByID(id) {
             }
         ]
     });
-
-    if (!fan) {
-        throw new Error(`Fan con ID ${id} no encontrado`);
-    }
     return fan;
 }
 

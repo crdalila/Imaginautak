@@ -33,8 +33,11 @@ async function edit(req, res) {
     try {
         const currentUser = req.user;
         const id = req.params.id;
+        if (!id || !currentUser){
+            return res.status(404).json({ error: "Usuario no encontrado" });
+        }
         // si el usuario logueado no es el del perfil que quieres editar o si no es un admin
-        if (currentUser.id !== id && !isAdmin(req)) {
+        if (currentUser.id !== id) {
             return res.status(403).json({ error: "No tienes permiso para editar este usuario." });
         }
         const result = await userController.edit(id, req.body);

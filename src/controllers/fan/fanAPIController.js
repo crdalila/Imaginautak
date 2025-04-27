@@ -1,5 +1,6 @@
 import fanController from "./fanController.js";
 import { findFanByUserId, isOwner} from "../../utils/permissions.js";
+import userAPIController from "../user/userAPIController.js";
 
 async function getByID(req, res) {
     try {
@@ -40,6 +41,9 @@ async function edit(req, res) {
     try {
         const id = req.params.id;
         const fan = await fanController.getByID(id);
+        if (!fan) {
+            return res.status(404).json({ error: "Fan no encontrado." });
+        }
         // comprobar si quien ha iniciado sesión es el propietario de este perfil
         if (!isOwner(fan.fan_id, req.user.user_id)) {
             return res.status(403).json({ error: "No tienes permiso para editar este perfil." });
@@ -59,6 +63,14 @@ async function edit(req, res) {
 async function remove(req, res) {
     try {
         const id = req.params.id;
+        const fan = await fanController.getByID(id);
+        if (!fan) {
+            return res.status(404).json({ error: "Fan no encontrado." });
+        }
+        // comprobar si quien ha iniciado sesión es el propietario de este perfil
+        if (!isOwner(fan.fan_id, req.user.user_id) && !userAPIController.isAdmin(req)) {
+            return res.status(403).json({ error: "No tienes permiso para eliminar este perfil." });
+        }
         const response = await fanController.remove(id);
         res.status(200).json({ message: "Fan eliminado correctamente" });
     } catch (error) {

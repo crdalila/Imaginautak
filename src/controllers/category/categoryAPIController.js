@@ -39,7 +39,7 @@ async function create(req, res) {
             }
         });
         if (existingCategory) {
-            return res.status(400).json({ error: "Ya existe una categoría con este nombre" });
+            return res.status(400).json({ error: "Ya existe una categoría con este nombre." });
         }
         const category = await categoryController.create(req.body);
         res.json(category);
@@ -61,6 +61,9 @@ async function edit(req, res) {
         }
         const id = req.params.id;
         const result = await categoryController.edit(id, req.body);
+        if (!result) {
+            return res.status(404).json({ error: "Categoría no encontrada." });
+        }
         res.json(result);
     } catch (error) {
         console.error(error);
@@ -80,6 +83,9 @@ async function remove(req, res) {
         }
         const id = req.params.id;
         const response = await categoryController.remove(id);
+        if (!response) {
+            return res.status(404).json({ error: "Categoría no encontrada." });
+        }
         res.status(200).json({ message: "Categoría eliminada correctamente" });
     } catch (error) {
         console.error(error);

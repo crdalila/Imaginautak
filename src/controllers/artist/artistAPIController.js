@@ -74,6 +74,9 @@ async function edit(req, res) {
     try {
         const id = req.params.id;
         const artist = await artistController.getByID(id);
+        if (!artist) {
+            return res.status(404).json({ error: "Artista no encontrado." });
+        }
         //comprobar si quien ha iniciado sesión es el propietario de este perfil
         if (!isOwner(artist.artist_id, req.user.user_id)) {
             return res.status(403).json({ error: "No tienes permiso para editar este perfil." });
