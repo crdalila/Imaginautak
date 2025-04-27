@@ -1,8 +1,9 @@
 import projectController from "./projectController.js";
-import { findArtistByUserId } from "../../utils/permissions.js";
+import { findArtistByUserId, isOwner } from "../../utils/permissions.js";
 import Artist from "../../models/artist.js";
 import Project from "../../models/project.js";
 import Artist_has_project from "../../models/artist_has_project.js";
+import userAPIController from "../user/userAPIController.js";
 
 async function getAll(req, res) {
     try {
@@ -73,10 +74,30 @@ async function create(req, res) {
     }
 }
 
-
 async function edit(req, res) {
     try {
-        const id = req.params.id;
+         // encontrar proyecto
+         const id = req.params.id;
+         const project = await projectController.getByID(id);
+         if (!project) {
+             return res.status(404).json({ error: "Proyecto no encontrado." });
+         }
+         // buscar todos los artistas asociados a este proyecto
+         const artistProjects = await Artist_has_project.findAll({
+             where: { project_id: id }
+         });
+         if (!artistProjects || artistProjects.length === 0) {
+             return res.status(404).json({ error: "No se encontró ningún artista asociado a este proyecto." });
+         }
+         // extraer los artistas asociados
+         const artistIds = artistProjects.map(ap => ap.artist_id);
+ 
+         // comprobaciones
+         const userId = req.user.user_id;
+         const userIsArtistOfProject = artistIds.includes(userId); // ¿es uno de los artistas?
+         if (!userIsArtistOfProject) {
+             return res.status(403).json({ error: "No tienes permiso para eliminar este proyecto." });
+         }
         const result = await projectController.edit(id, req.body);
         res.json(result);
     } catch (error) {
@@ -91,7 +112,31 @@ async function edit(req, res) {
 
 async function remove(req, res) {
     try {
+        // encontrar proyecto
         const id = req.params.id;
+        const project = await projectController.getByID(id);
+        if (!project) {
+            return res.status(404).json({ error: "Proyecto no encontrado." });
+        }
+        // buscar todos los artistas asociados a este proyecto
+        const artistProjects = await Artist_has_project.findAll({
+            where: { project_id: id }
+        });
+        if (!artistProjects || artistProjects.length === 0) {
+            return res.status(404).json({ error: "No se encontró ningún artista asociado a este proyecto." });
+        }
+        // extraer los artistas asociados
+        const artistIds = artistProjects.map(ap => ap.artist_id);
+
+        // comprobaciones
+        const userId = req.user.user_id;
+        const userIsArtistOfProject = artistIds.includes(userId); // ¿es uno de los artistas?
+        const userIsAdmin = userAPIController.isAdmin(req); // ¿es admin? (no funciona isAdmin solo, necesita el userAPIController)
+
+        if (!userIsArtistOfProject && !userIsAdmin) {
+            return res.status(403).json({ error: "No tienes permiso para eliminar este proyecto." });
+        }
+        // eliminar el proyecto
         const response = await projectController.remove(id);
         res.status(200).json({ message: "Proyecto eliminado correctamente" });
     } catch (error) {
@@ -99,6 +144,7 @@ async function remove(req, res) {
         res.status(500).json({ error: "Error del servidor" });
     }
 }
+
 
 export default {
     getAll,
