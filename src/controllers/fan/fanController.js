@@ -30,7 +30,7 @@ async function getByID(id) {
 
 // Crear una cuenta FAN
 async function create(data) {
-    const { img, bio } = data; // si no desestructuras, tendríamos que poner data.img y data.bio
+    const { img, bio } = data; // si no desestructuras, tendríamos que poner data.img y data.bio y así utilizamos para crear ruta de la img
     if (!img) {
         throw new FanImgNotProvided();
     }

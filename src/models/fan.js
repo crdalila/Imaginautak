@@ -10,6 +10,7 @@ const Fan = connection.define("fan", {
     },
     img: {
         type: DataTypes.STRING(128),
+        allowNull: false,
     },
     bio: {
         type: DataTypes.STRING(250),

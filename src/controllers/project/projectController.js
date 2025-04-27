@@ -119,7 +119,7 @@ async function create(data) {
     if (!data.project_url) {
         throw new ProjectURLNotProvided();
     }
-    if (!data.project_imgs) {
+    if (!data.project_imgs || data.project_imgs.length === 0) {
         throw new ProjectImgsNotProvided();
     }
     if (!data.created_at) {
@@ -128,7 +128,7 @@ async function create(data) {
     const newProject = await Project.create(data);
     // definir las categorías
     let categoryIds = [];
-    if (data.categoryIds && data.categoryIds.length > 0) { // si pone categorías, que sea la que ha escrito
+    if (Array.isArray(data.categoryIds) && data.categoryIds.length > 0) { // si pone categorías, que sea la que ha escrito
         categoryIds = data.categoryIds;
     } else {
         categoryIds = [21]; // si no, ponemos "otros" (id 21) por defecto

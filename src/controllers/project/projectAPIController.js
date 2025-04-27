@@ -51,10 +51,17 @@ async function create(req, res) {
         if (!existingArtist) {
             return res.status(403).json({ error: "Debes ser un artista para crear un proyecto." });
         }
-        // crear proyecto (con categorías)
+        // para las imágenes (hay que hacerlo aquí y no en la lógica de js porque necesitamos req.files)
+         if (!req.files || req.files.length === 0) {
+            return res.status(400).json({ error: "Debes subir al menos una imagen para el proyecto." });
+        }
+        const projectImgs = req.files.map(file => file.path);  // obtener los paths de las imágenes subidas
+        const projectImgsString = projectImgs.join(','); // convertir a string porque sino da error
+        // añadir al req.body estos campos
         const projectData = {
             ...req.body,
-            created_at: new Date() // si no se manda created_at en el formulario, lo añadimos aquí
+            project_imgs: projectImgsString,  // pasamos las imágenes aquí
+            created_at: new Date()  // si no se manda created_at en el formulario, lo añadimos aquí
         };
         const project = await projectController.create(projectData);
 
