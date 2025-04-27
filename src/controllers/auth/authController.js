@@ -32,10 +32,17 @@ async function register(userData) {
     // hashear la contraseña
     const hashedPassword = await hash(userData.password);
     userData.password = hashedPassword;
-    const result = await User.create(userData);
+    const newUser = await User.create(userData);
+    // para sacarlo sin contraseña
+    const result = await User.findByPk(newUser.user_id, {
+        attributes: {
+            exclude: ['password']
+        }
+    });
 
     return result;
 }
+
 
 // LOGGEARSE
 async function login(email, password) {

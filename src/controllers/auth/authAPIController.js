@@ -26,7 +26,7 @@ async function login(req, res) {
             role: result.role,
         }
         const token = createToken(loginData);
-        res.json({token:token}); //TODO que no se enseñe la contraseña
+        res.json({token:token});
     } catch (error) {
         console.error(error);
         if (error.statusCode) {
@@ -38,9 +38,14 @@ async function login(req, res) {
 }
 
 // DESLOGGEARSE
-function logout(req, res) {
-    req.session.user = undefined;
-    res.redirect("/");
+async function logout(req, res) {
+    try {
+        //no se puede eliminar el token desde backend
+        res.json({ message: "Has cerrado sesión correctamente." });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error del servidor interno" });
+    }
 }
 
 export default {
