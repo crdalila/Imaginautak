@@ -3,6 +3,8 @@ import Category from "../../models/category.js";
 import Project from "../../models/project.js";
 import Project_has_category from "../../models/project_has_category.js";
 import Fan_favorites_project from "../../models/fan_favorites_project.js";
+import Fan from "../../models/fan.js";
+import User from "../../models/fan.js";
 import { ProjectDateNotProvided, ProjectDescriptionNotProvided, ProjectTitleNotProvided, ProjectImgsNotProvided, ProjectURLNotProvided } from "../../utils/errors.js";
 
 // Conseguir todos los PROJECTS (solo título, descripción y categorías)
@@ -41,6 +43,13 @@ async function getByID(id) {
                 through: {
                     attributes: []
                 }
+            },
+            {
+                model: Fan,
+                attributes: ['fan_id'],
+                through: {
+                    attributes: []
+                }
             }
         ]
     });
@@ -73,6 +82,13 @@ async function getByTitle(title) {
             {
                 model: Category,
                 attributes: ['category_id', 'category_name'],
+                through: {
+                    attributes: []
+                }
+            },
+            {
+                model: Fan,
+                attributes: ['fan_id'],
                 through: {
                     attributes: []
                 }

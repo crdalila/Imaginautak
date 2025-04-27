@@ -4,7 +4,9 @@ import Project from "../../models/project.js";
 import Project_has_category from "../../models/project_has_category.js";
 import Category from "../../models/category.js";
 import Fan_follows_artist from "../../models/fan_follows_artist.js";
+import Fan from "../../models/fan.js";
 import { ArtistBioNotProvided, ArtistImgNotProvided, ArtistNameNotProvided, ArtistSocialMediaNotProvided } from "../../utils/errors.js";
+import User from "../../models/user.js";
 
 // Conseguir todos los ARTIST (solo nombre artístico y ordenado por orden alfabético)
 async function getAll() {
@@ -15,7 +17,7 @@ async function getAll() {
     return artists;
 } 
 
-// Conseguir ARTIST por su ID y mostrar sus proyectos
+// Conseguir ARTIST por su ID y mostrar sus proyectos y sus followers
 async function getByID(id) {
     const artist = await Artist.findByPk(id, {
         include: [
@@ -36,8 +38,23 @@ async function getByID(id) {
                             attributes: ['category_id', 'category_name']
                         }
                     ],
-            }],
-        });
+            },
+            {
+                model: Fan,
+                through: {
+                    model: Fan_follows_artist,
+                    attributes: []
+                },
+                attributes: ['fan_id'],
+                include: [
+                    {
+                        model: User,
+                        attributes: ['user_id', 'username']
+                    }
+                ]
+            }
+        ],
+    });
     if (!artist) {
         return null;
     }
@@ -51,7 +68,7 @@ async function getByID(id) {
     return artistData;
 }
 
-// Conseguir ARTIST por su ARTISTIC_NAME y mostrar sus proyectos
+// Conseguir ARTIST por su ARTISTIC_NAME y mostrar sus proyectos y sus followers
 async function getByName(artistic_name) {
     const artist = await Artist.findOne({
         where: { artistic_name },
@@ -71,6 +88,20 @@ async function getByName(artistic_name) {
                             attributes: []
                         },
                         attributes: ['category_id', 'category_name']
+                    }
+                ]
+            },
+            {
+                model: Fan,
+                through: {
+                    model: Fan_follows_artist,
+                    attributes: []
+                },
+                attributes: ['fan_id'],
+                include: [
+                    {
+                        model: User,
+                        attributes: ['user_id', 'username']
                     }
                 ]
             }
