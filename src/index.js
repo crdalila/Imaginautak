@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import router from "./routes/router.js";
+import cors from "cors";
 import './models/relations.js';
 
 // cargar variables de entorno
@@ -9,6 +10,9 @@ dotenv.config();
 // crear servidor express
 const APP_PORT = process.env.APP_PORT;
 const app = express();
+
+// poner en marcha cors
+app.use(cors());
 
 // para leer JSON de las peticiones
 app.use(express.json());
