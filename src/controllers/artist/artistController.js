@@ -11,7 +11,7 @@ import User from "../../models/user.js";
 // Conseguir todos los ARTIST (solo nombre artístico y ordenado por orden alfabético)
 async function getAll() {
     const artists = await Artist.findAll({
-        attributes: ['artistic_name', 'artist_id'],
+        attributes: ['artistic_name', 'artist_id', 'img', 'bio'],
         order: [['artistic_name', 'ASC']]
     });
     return artists;

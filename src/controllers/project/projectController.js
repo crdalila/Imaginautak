@@ -10,7 +10,7 @@ import { ProjectDateNotProvided, ProjectDescriptionNotProvided, ProjectTitleNotP
 // Conseguir todos los PROJECTS (solo título, descripción y categorías)
 async function getAll() {
     const projects = await Project.findAll({
-            attributes: ['project_id', 'title'],
+            attributes: ['project_id', 'title', 'description', 'project_imgs'],
             include: [
                 {
                     model: Category,
@@ -19,6 +19,10 @@ async function getAll() {
                         model: Project_has_category,
                         attributes: [] // para ocultar la tabla intermedia
                     },
+                },
+                {   
+                    model: Artist,
+                    attributes: ['artist_id', 'artistic_name'],
                 }
             ],
         order: [['title', 'ASC']]
