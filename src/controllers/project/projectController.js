@@ -22,6 +22,7 @@ async function getAll() {
                 },
                 {   
                     model: Artist,
+                    
                     attributes: ['artist_id', 'artistic_name'],
                 }
             ],
