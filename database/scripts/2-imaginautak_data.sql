@@ -29,7 +29,7 @@ VALUES
 INSERT INTO artist (artist_id, artistic_name, bio, website, social_media_01, social_media_02, img)
 VALUES
 (11, 'Dalila Cabrera', 'Escritora apasionada por mundos imaginarios y emociones profundas.', 'https://dalilaescribe.com', '@cr_dalila', NULL, 'https://placehold.co/300x300'),
-(12, 'Vicky PR', 'Diseña joyas únicas de plata inspiradas en los 2000.', NULL, '@vickyjoyas', '@silver_vicky', 'https://placehold.co/300x300g'),
+(12, 'Vicky PR', 'Diseña joyas únicas de plata inspiradas en los 2000.', NULL, '@vickyjoyas', '@silver_vicky', 'https://placehold.co/300x300'),
 (13, 'DONE', 'Diseñadora gráfica enfocada en branding con impacto social.', 'https://anaisdesign.com', '@anais.design', NULL, 'https://placehold.co/300x300'),
 (14, 'Igor Uve', 'Ilustrador digital con influencias de los juegos de rol y pokémon', NULL, '@igor.illustrates', NULL, 'https://placehold.co/300x300'),
 (15, 'Izas Camarero', 'Cineasta independiente enfocada en narrativas feministas y surrealistas.', 'https://izasfilms.net', '@izas.cinema', '@filmizas', 'https://placehold.co/300x300'),
@@ -56,16 +56,16 @@ VALUES
 -- tabla PROJECT
 INSERT INTO project (title, description, trigger_warnings, project_url, project_imgs, project_video, created_at)
 VALUES
-('Entre aplausos y burbujas estrelladas', 'Antología de relatos con background feminista y fantasioso', NULL, 'https://dalilaescribe.com/cuerpos', 'https://placehold.co/600x400', NULL, NOW()),
+('Entre aplausos y burbujas estrelladas', 'Antología de relatos con background feminista y fantasioso', 'salud mental', 'https://dalilaescribe.com/cuerpos', 'https://placehold.co/600x400', NULL, NOW()),
 ('Raíces de plata', 'Colección de joyas inspiradas en raíces, cortezas y estructuras vegetales.', NULL, 'https://vickyjoy.com/raices', 'https://placehold.co/600x400', NULL, NOW()),
 ('DONE0424', 'Identidad gráfica de la ilustradora Anaís Cabado, diseño gráfico e ilustración', NULL, 'https://anaisdesign.com/flotantes', 'https://placehold.co/600x400', NULL, NOW()),
 ('New Pokémons', 'Serie de ilustraciones de variaciones de pokémon ya existentes o pokémon creados por mí', NULL, 'https://igorart.com/bestiario', 'https://placehold.co/600x400', NULL, NOW()),
-('La vida en el campo', 'Cortometraje experimental sobre la vuelta a la naturaleza y los pueblos', 'death', 'https://izasfilms.net/tiempomuerto', 'https://placehold.co/600x400', 'tiempo_muerto.mp4', NOW()),
-('Roma es inevitable', 'Libro de poesía sobre cómo todos los caminos llevan a roma, al feminismo y la escritura.', 'mental health', 'https://amaia.poetry/ruinas', 'https://placehold.co/600x400', NULL, NOW()),
+('La vida en el campo', 'Cortometraje experimental sobre la vuelta a la naturaleza y los pueblos', 'muerte', 'https://izasfilms.net/tiempomuerto', 'https://placehold.co/600x400', 'tiempo_muerto.mp4', NOW()),
+('Roma es inevitable', 'Libro de poesía sobre cómo todos los caminos llevan a roma, al feminismo y la escritura.', 'salud mental', 'https://amaia.poetry/ruinas', 'https://placehold.co/600x400', NULL, NOW()),
 ('Luz de barrio', 'Serie fotográfica documental sobre la vida cotidiana.', NULL, 'https://leoviews.com/luzdebarrio', 'https://placehold.co/600x400', NULL, NOW()),
-('Colores del ruido', 'Pinturas abstractas sobre el caos sonoro moderno.', NULL, 'https://lorna.art/ruido', 'https://placehold.co/600x400', NULL, NOW()),
-('So sad today', 'Charlas explicativas que reflexionan sobre la salud mental de las personas trans', 'mental health', 'https://kimetz.org/rebel', 'https://placehold.co/600x400', NULL, NOW()),
-('Frankenstein', 'Álbum experimental que combina rock indie y electrónica.', NULL, 'https://noahmusic.net/natsyn', 'https://placehold.co/600x400', 'https://www.youtube.com/watch?v=znckijGfAYc', NOW());
+('Colores del ruido', 'Pinturas abstractas sobre el caos sonoro moderno.', 'violencia', 'https://lorna.art/ruido', 'https://placehold.co/600x400', NULL, NOW()),
+('So sad today', 'Charlas explicativas que reflexionan sobre la salud mental de las personas trans', 'discriminación', 'https://kimetz.org/rebel', 'https://placehold.co/600x400', NULL, NOW()),
+('Frankenstein', 'Álbum experimental que combina rock indie y electrónica.', 'salud mental', 'https://noahmusic.net/natsyn', 'https://placehold.co/600x400', 'https://www.youtube.com/watch?v=znckijGfAYc', NOW());
 
 -- tabla CATEGORIES
 INSERT INTO category (category_name)
