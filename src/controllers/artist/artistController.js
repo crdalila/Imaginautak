@@ -132,7 +132,7 @@ async function create(data) {
     if (!data.social_media_01) {
         throw new ArtistSocialMediaNotProvided();
     }
-    if (!data.img) {
+    if (!data.img || data.img.length === 0) {
         throw new ArtistImgNotProvided();
     }
     const newArtist = await Artist.create(data);

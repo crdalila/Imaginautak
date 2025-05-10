@@ -19,15 +19,16 @@ const Project = connection.define("project", {
         allowNull: false,
     },
     trigger_warnings:{
-        type: DataTypes.ENUM("violence", "abuse", "drugs", "death", "mental health", "illness"),
+        type: DataTypes.ENUM("violencia", "abuso", "drogas", "muerte", "salud mental", "enfermedad", "discriminación"),
     },
     project_url:{
-        type: DataTypes.STRING(45),
+        type: DataTypes.STRING(145),
         allowNull: false,
     },
     project_imgs:{
         type: DataTypes.STRING(255),
         allowNull: false,
+        defaultValue: "images/placehold_project.png",
     },
     project_video: {
         type: DataTypes.STRING(255),

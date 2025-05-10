@@ -11,6 +11,9 @@ dotenv.config();
 const APP_PORT = process.env.APP_PORT;
 const app = express();
 
+// para acceder a los archivos públicos (imgs)
+app.use(express.static("public"));
+
 // poner en marcha cors
 app.use(cors());
 

@@ -28,16 +28,16 @@ VALUES
 -- tabla ARTIST
 INSERT INTO artist (artist_id, artistic_name, bio, website, social_media_01, social_media_02, img)
 VALUES
-(11, 'Dalila Cabrera', 'Escritora apasionada por mundos imaginarios y emociones profundas.', 'https://dalilaescribe.com', '@cr_dalila', NULL, 'https://placehold.co/300x300'),
-(12, 'Vicky PR', 'Diseña joyas únicas de plata inspiradas en los 2000.', NULL, '@vickyjoyas', '@silver_vicky', 'https://placehold.co/300x300'),
-(13, 'DONE', 'Diseñadora gráfica enfocada en branding con impacto social.', 'https://anaisdesign.com', '@anais.design', NULL, 'https://placehold.co/300x300'),
-(14, 'Igor Uve', 'Ilustrador digital con influencias de los juegos de rol y pokémon', NULL, '@igor.illustrates', NULL, 'https://placehold.co/300x300'),
-(15, 'Izas Camarero', 'Cineasta independiente enfocada en narrativas feministas y surrealistas.', 'https://izasfilms.net', '@izas.cinema', '@filmizas', 'https://placehold.co/300x300'),
-(16, 'Amaia Barrena', 'Poeta urbana con sensibilidad social y enfoque feminista.', NULL, '@amaia.poetry', NULL, 'https://placehold.co/300x300'),
-(17, 'Leo Alves', 'Fotógrafo de calle y documental, capturando lo invisible.', 'https://leoviews.com', '@views.leo', NULL, 'https://placehold.co/300x300'),
-(18, 'Lorna', 'Pintora abstracta, trabaja con emociones y color como lenguaje.', NULL, '@lorna.art', '@lorna.l', 'https://placehold.co/300x300'),
-(19, 'Kimetz', 'Activista trans, habla sobre sexualidad, identidad y salud mental', 'https://kimetzart.org', '@kimetz.a', NULL, 'https://placehold.co/300x300'),
-(20, 'Goodbye Kepler', 'Banda de rock indie con sonidos tranquilos y letras profundas', 'https://noahmusic.net', '@noah.beats', '@beatsby.noah', 'https://placehold.co/300x300');
+(11, 'Dalila Cabrera', 'Escritora apasionada por mundos imaginarios y emociones profundas.', 'https://dalilaescribe.com', '@cr_dalila', NULL, '/images/placehold_profile.png'),
+(12, 'Vicky PR', 'Diseña joyas únicas de plata inspiradas en los 2000.', NULL, '@vickyjoyas', '@silver_vicky', '/images/placehold_profile.png'),
+(13, 'DONE', 'Diseñadora gráfica enfocada en branding con impacto social.', 'https://anaisdesign.com', '@anais.design', NULL, '/images/placehold_profile.png'),
+(14, 'Igor Uve', 'Ilustrador digital con influencias de los juegos de rol y pokémon', NULL, '@igor.illustrates', NULL, '/images/placehold_profile.png'),
+(15, 'Izas Camarero', 'Cineasta independiente enfocada en narrativas feministas y surrealistas.', 'https://izasfilms.net', '@izas.cinema', '@filmizas', '/images/placehold_profile.png'),
+(16, 'Amaia Barrena', 'Poeta urbana con sensibilidad social y enfoque feminista.', NULL, '@amaia.poetry', NULL, '/images/placehold_profile.png'),
+(17, 'Leo Alves', 'Fotógrafo de calle y documental, capturando lo invisible.', 'https://leoviews.com', '@views.leo', NULL, '/images/placehold_profile.png'),
+(18, 'Lorna', 'Pintora abstracta, trabaja con emociones y color como lenguaje.', NULL, '@lorna.art', '@lorna.l', '/images/placehold_profile.png'),
+(19, 'Kimetz', 'Activista trans, habla sobre sexualidad, identidad y salud mental', 'https://kimetzart.org', '@kimetz.a', NULL, '/images/placehold_profile.png'),
+(20, 'Goodbye Kepler', 'Banda de rock indie con sonidos tranquilos y letras profundas', 'https://noahmusic.net', '@noah.beats', '@beatsby.noah', '/images/placehold_profile.png');
 
 -- tabla FANS
 INSERT INTO fan (fan_id, img, bio)
@@ -56,16 +56,16 @@ VALUES
 -- tabla PROJECT
 INSERT INTO project (title, description, trigger_warnings, project_url, project_imgs, project_video, created_at)
 VALUES
-('Entre aplausos y burbujas estrelladas', 'Antología de relatos con background feminista y fantasioso', 'salud mental', 'https://dalilaescribe.com/cuerpos', 'https://placehold.co/600x400', NULL, NOW()),
-('Raíces de plata', 'Colección de joyas inspiradas en raíces, cortezas y estructuras vegetales.', NULL, 'https://vickyjoy.com/raices', 'https://placehold.co/600x400', NULL, NOW()),
-('DONE0424', 'Identidad gráfica de la ilustradora Anaís Cabado, diseño gráfico e ilustración', NULL, 'https://anaisdesign.com/flotantes', 'https://placehold.co/600x400', NULL, NOW()),
-('New Pokémons', 'Serie de ilustraciones de variaciones de pokémon ya existentes o pokémon creados por mí', NULL, 'https://igorart.com/bestiario', 'https://placehold.co/600x400', NULL, NOW()),
-('La vida en el campo', 'Cortometraje experimental sobre la vuelta a la naturaleza y los pueblos', 'muerte', 'https://izasfilms.net/tiempomuerto', 'https://placehold.co/600x400', 'tiempo_muerto.mp4', NOW()),
-('Roma es inevitable', 'Libro de poesía sobre cómo todos los caminos llevan a roma, al feminismo y la escritura.', 'salud mental', 'https://amaia.poetry/ruinas', 'https://placehold.co/600x400', NULL, NOW()),
-('Luz de barrio', 'Serie fotográfica documental sobre la vida cotidiana.', NULL, 'https://leoviews.com/luzdebarrio', 'https://placehold.co/600x400', NULL, NOW()),
-('Colores del ruido', 'Pinturas abstractas sobre el caos sonoro moderno.', 'violencia', 'https://lorna.art/ruido', 'https://placehold.co/600x400', NULL, NOW()),
-('So sad today', 'Charlas explicativas que reflexionan sobre la salud mental de las personas trans', 'discriminación', 'https://kimetz.org/rebel', 'https://placehold.co/600x400', NULL, NOW()),
-('Frankenstein', 'Álbum experimental que combina rock indie y electrónica.', 'salud mental', 'https://noahmusic.net/natsyn', 'https://placehold.co/600x400', 'https://www.youtube.com/watch?v=znckijGfAYc', NOW());
+('Entre aplausos y burbujas estrelladas', 'Antología de relatos con background feminista y fantasioso', 'salud mental', 'https://dalilaescribe.com/cuerpos', '/images/placehold_project.png', NULL, NOW()),
+('Raíces de plata', 'Colección de joyas inspiradas en raíces, cortezas y estructuras vegetales.', NULL, 'https://vickyjoy.com/raices', '/images/placehold_project.png', NULL, NOW()),
+('DONE0424', 'Identidad gráfica de la ilustradora Anaís Cabado, diseño gráfico e ilustración', NULL, 'https://anaisdesign.com/flotantes', '/images/placehold_project.png', NULL, NOW()),
+('New Pokémons', 'Serie de ilustraciones de variaciones de pokémon ya existentes o pokémon creados por mí', NULL, 'https://igorart.com/bestiario', '/images/placehold_project.png', NULL, NOW()),
+('La vida en el campo', 'Cortometraje experimental sobre la vuelta a la naturaleza y los pueblos', 'muerte', 'https://izasfilms.net/tiempomuerto', '/images/placehold_project.png', 'tiempo_muerto.mp4', NOW()),
+('Roma es inevitable', 'Libro de poesía sobre cómo todos los caminos llevan a roma, al feminismo y la escritura.', 'salud mental', 'https://amaia.poetry/ruinas', '/images/placehold_project.png', NULL, NOW()),
+('Luz de barrio', 'Serie fotográfica documental sobre la vida cotidiana.', NULL, 'https://leoviews.com/luzdebarrio', '/images/placehold_project.png', NULL, NOW()),
+('Colores del ruido', 'Pinturas abstractas sobre el caos sonoro moderno.', 'violencia', 'https://lorna.art/ruido', '/images/placehold_project.png', NULL, NOW()),
+('So sad today', 'Charlas explicativas que reflexionan sobre la salud mental de las personas trans', 'discriminación', 'https://kimetz.org/rebel', '/images/placehold_project.png', NULL, NOW()),
+('Frankenstein', 'Álbum experimental que combina rock indie y electrónica.', 'salud mental', 'https://noahmusic.net/natsyn', '/images/placehold_project.png', 'https://www.youtube.com/watch?v=znckijGfAYc', NOW());
 
 -- tabla CATEGORIES
 INSERT INTO category (category_name)

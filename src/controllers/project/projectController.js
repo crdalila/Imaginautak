@@ -124,7 +124,7 @@ async function create(data) {
     if (!data.project_url) {
         throw new ProjectURLNotProvided();
     }
-    if (!data.project_imgs) {
+    if (!data.project_imgs || data.project_imgs.length === 0) {
         throw new ProjectImgsNotProvided();
     }
     if (!data.created_at) {
