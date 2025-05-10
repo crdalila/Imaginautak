@@ -22,11 +22,12 @@ async function login(req, res) {
         const {email, password} = req.body;
         const result = await authController.login(email, password); // lo que necesitamos para el login
         const loginData = { // para crear el token, necesita solo los datos específicos id y rol, para saber quién es y qué permisos tiene
+            name: result.username,
             user_id: result.user_id,
             role: result.role,
         }
         const token = createToken(loginData);
-        res.json({token:token});
+        res.json({token:token, user:loginData});
     } catch (error) {
         console.error(error);
         if (error.statusCode) {
