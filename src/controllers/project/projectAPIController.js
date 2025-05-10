@@ -1,7 +1,5 @@
 import projectController from "./projectController.js";
-import { findArtistByUserId, isOwner } from "../../utils/permissions.js";
-import Artist from "../../models/artist.js";
-import Project from "../../models/project.js";
+import { findArtistByUserId } from "../../utils/permissions.js"
 import Artist_has_project from "../../models/artist_has_project.js";
 import userAPIController from "../user/userAPIController.js";
 
@@ -51,10 +49,17 @@ async function create(req, res) {
         if (!existingArtist) {
             return res.status(403).json({ error: "Debes ser un artista para crear un proyecto." });
         }
-        // crear proyecto (con categorías)
+        // para las imágenes (hay que hacerlo aquí y no en la lógica de js porque necesitamos req.files)
+        if (!req.files || req.files.length === 0) {
+            return res.status(400).json({ error: "Debes subir al menos una imagen para el proyecto." });
+        }
+        const projectImgs = req.files.map(file => file.path);  // obtener los paths de las imágenes subidas
+        const projectImgsString = projectImgs.join(','); // convertir a string porque sino da error
+        // añadir al req.body estos campos
         const projectData = {
             ...req.body,
-            created_at: new Date() // si no se manda created_at en el formulario, lo añadimos aquí
+            project_imgs: projectImgsString,  // pasamos las imágenes aquí
+            created_at: new Date()  // si no se manda created_at en el formulario, lo añadimos aquí
         };
         const project = await projectController.create(projectData);
 
@@ -98,7 +103,16 @@ async function edit(req, res) {
          if (!userIsArtistOfProject) {
              return res.status(403).json({ error: "No tienes permiso para eliminar este proyecto." });
          }
-        const result = await projectController.edit(id, req.body);
+        // manejo de nuevas imágenes si se suben
+        let updatedData = { ...req.body };
+        if (req.files && req.files.length > 0) {
+            if (req.files.length > 10) {
+                return res.status(400).json({ error: "Solo puedes subir hasta 10 imágenes del proyecto." });
+            }
+            const newImagePaths = req.files.map(file => file.path);
+            updatedData.project_imgs = newImagePaths.join(',');
+        }
+        const result = await projectController.edit(id, updatedData);
         res.json(result);
     } catch (error) {
         console.error(error);

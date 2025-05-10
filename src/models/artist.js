@@ -30,6 +30,7 @@ const Artist = connection.define("artist", {
     img: {
         type: DataTypes.STRING(250),
         allowNull: false,
+        defaultValue: "images/placehold_profile.png",
     },
 })
 

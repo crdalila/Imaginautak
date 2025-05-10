@@ -23,9 +23,14 @@ async function create(req, res) {
         if (existingFan) {
             return res.status(400).json({ error: "Ya tienes un perfil de fan creado." });
         }
-        const { img, bio } = req.body;
+        // comprobar si la imagen ha sido subida
+        if (!req.file) {
+            return res.status(400).json({ error: "La imagen de perfil es obligatoria." });
+        }
+        const imgPath = req.file.path; // url o path de la img
+        const { bio } = req.body;
         const fan = await fanController.create({
-            img,
+            img: imgPath,
             bio,
             fan_id: userId, // asociar el fan al usuario que está logueado
         });
@@ -48,7 +53,20 @@ async function edit(req, res) {
         if (!isOwner(fan.fan_id, req.user.user_id)) {
             return res.status(403).json({ error: "No tienes permiso para editar este perfil." });
         }
-        const result = await fanController.edit(id, req.body);
+        // si se suben nuevas imágenes, obtenerlas y actualizar el campo
+        let imgPath = fan.img; // si no se sube nada, mantiene la imagen actual
+        if (req.files && req.files.length > 1) {
+            return res.status(400).json({ error: "Solo puedes subir una imagen de perfil." });
+        }
+        if (req.files && req.files.length === 1) {
+            imgPath = req.files[0].path; // usar la imagen subida
+        }
+        // actualizar los datos del fan
+        const updatedFanData = {
+            ...req.body,
+            img: imgPath
+        };
+        const result = await fanController.edit(id, updatedFanData);
         res.json(result);
     } catch (error) {
         console.error(error);

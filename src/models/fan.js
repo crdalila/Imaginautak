@@ -10,6 +10,8 @@ const Fan = connection.define("fan", {
     },
     img: {
         type: DataTypes.STRING(128),
+        allowNull: false,
+        defaultValue: "images/placehold_profile.png",
     },
     bio: {
         type: DataTypes.STRING(250),
