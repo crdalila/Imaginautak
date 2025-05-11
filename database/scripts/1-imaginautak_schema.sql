@@ -111,13 +111,13 @@ CREATE TABLE IF NOT EXISTS `imaginautak`.`artist_has_project` (
   CONSTRAINT `fk_artist_has_project_artist1`
     FOREIGN KEY (`artist_id`)
     REFERENCES `imaginautak`.`artist` (`artist_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_artist_has_project_project1`
     FOREIGN KEY (`project_id`)
     REFERENCES `imaginautak`.`project` (`project_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -135,13 +135,13 @@ CREATE TABLE IF NOT EXISTS `imaginautak`.`fan_favorites_project` (
   CONSTRAINT `fk_fan_has_project1_fan1`
     FOREIGN KEY (`fan_id`)
     REFERENCES `imaginautak`.`fan` (`fan_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_fan_has_project1_project1`
     FOREIGN KEY (`project_id`)
     REFERENCES `imaginautak`.`project` (`project_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -159,13 +159,13 @@ CREATE TABLE IF NOT EXISTS `imaginautak`.`fan_follows_artist` (
   CONSTRAINT `fk_fan_has_artist_fan1`
     FOREIGN KEY (`fan_id`)
     REFERENCES `imaginautak`.`fan` (`fan_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_fan_has_artist_artist1`
     FOREIGN KEY (`artist_id`)
     REFERENCES `imaginautak`.`artist` (`artist_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -196,13 +196,13 @@ CREATE TABLE IF NOT EXISTS `imaginautak`.`project_has_category` (
   CONSTRAINT `fk_project_has_category_project1`
     FOREIGN KEY (`project_id`)
     REFERENCES `imaginautak`.`project` (`project_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_project_has_category_category1`
     FOREIGN KEY (`category_id`)
     REFERENCES `imaginautak`.`category` (`category_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
